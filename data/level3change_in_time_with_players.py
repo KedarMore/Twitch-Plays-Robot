@@ -10,14 +10,19 @@ import math
 totaltime = np.array([63.56, 121.29, 121.29, 121.29, 56.64, 56.64, 56.64, 56.64, 400,400,400, 2281])
 noofplayers=np.array([1,2,2,2,4,4,4,4,6,6,6,29])
 
+# totaltime = np.array([2, 4, 6, 7, 8, 8, 7, 6, 5, 5, 5, 5,
+#                       5, 6, 7, 9, 11, 13, 16, 20, 22, 24, 25, 26, 26, 27, 27])
+# noofplayers = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
+#                         13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27])
+
 plt.xlabel("number of players")
 plt.ylabel("total time (in seconds)")
 plt.title("Change in total time w.r.t number of players (Level 3)")
 
-u=np.linspace(0,1,50)
-
-Px = noofplayers[0]*1*np.power(u,4)+noofplayers[1]*4*np.power(u,3) * (1-u)+noofplayers[2]*6*np.power(u,2)*np.power((1-u),2)+noofplayers[3]*4*u*np.power((1-u),3)+noofplayers[4]*1*np.power((1-u),4)
-Py= totaltime[0]*1*np.power(u,4)+totaltime[1]*4*np.power(u,3) * (1-u)+totaltime[2]*6*np.power(u,2)*np.power((1-u),2)+totaltime[3]*4*u*np.power((1-u),3)+totaltime[4]*1*np.power((1-u),4)
+u=np.linspace(0,1,100)
+print(u)
+# Px = noofplayers[0]*1*np.power(u,4)+noofplayers[1]*4*np.power(u,3) * (1-u)+noofplayers[2]*6*np.power(u,2)*np.power((1-u),2)+noofplayers[3]*4*u*np.power((1-u),3)+noofplayers[4]*1*np.power((1-u),4)
+# Py= totaltime[0]*1*np.power(u,4)+totaltime[1]*4*np.power(u,3) * (1-u)+totaltime[2]*6*np.power(u,2)*np.power((1-u),2)+totaltime[3]*4*u*np.power((1-u),3)+totaltime[4]*1*np.power((1-u),4)
 
 points=len(noofplayers)
 
@@ -28,6 +33,7 @@ for i in range(points):
     Py = Py+(math.factorial(points-1)/(math.factorial(i)*math.factorial(points-1-i)))*totaltime[i]*np.power(u, points-1-i)*np.power(1-u, i)
 
 num=0
+print(Px)
 
 # for i in [0,1,4,8,11]:
 #     plt.plot(noofplayers[i], totaltime[i],'o', color="C"+str(num), Label="Number of Players= "+str(noofplayers[i])+" with time= "+str(totaltime[i])+" secs")
